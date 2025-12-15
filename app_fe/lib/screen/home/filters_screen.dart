@@ -14,10 +14,10 @@ class _FiltersScreenState extends State<FiltersScreen> {
 
   // Trạng thái cho Distance Slider
   double _distance = 10;
-  
+
   // Trạng thái cho Age Range Slider
   RangeValues _ageRange = RangeValues(20, 25);
-  
+
   // Trạng thái cho Online now Switch
   bool _onlineNow = false;
 
@@ -26,7 +26,11 @@ class _FiltersScreenState extends State<FiltersScreen> {
   final Color primaryPurple = Color(0xFF5F0F40);
 
   // --- Widget Row Checkbox ---
-  Widget _buildPreferenceCheckbox(String title, bool value, Function(bool?) onChanged) {
+  Widget _buildPreferenceCheckbox(
+    String title,
+    bool value,
+    Function(bool?) onChanged,
+  ) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -49,7 +53,12 @@ class _FiltersScreenState extends State<FiltersScreen> {
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
       ),
-      padding: EdgeInsets.only(top: 10, left: 20, right: 20, bottom: MediaQuery.of(context).viewInsets.bottom),
+      padding: EdgeInsets.only(
+        top: 10,
+        left: 20,
+        right: 20,
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -67,11 +76,15 @@ class _FiltersScreenState extends State<FiltersScreen> {
               ),
             ),
             SizedBox(height: 10),
-            
+
             // TIÊU ĐỀ
             Text(
               "Filters",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black87),
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 25),
@@ -80,13 +93,23 @@ class _FiltersScreenState extends State<FiltersScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Location", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(
+                  "Location",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
                 TextButton(
                   onPressed: () {},
                   child: Row(
                     children: [
-                      Text("People nearby", style: TextStyle(color: Colors.grey[600], fontSize: 16)),
-                      Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey[600]),
+                      Text(
+                        "People nearby",
+                        style: TextStyle(color: Colors.grey[600], fontSize: 16),
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 16,
+                        color: Colors.grey[600],
+                      ),
                     ],
                   ),
                 ),
@@ -95,11 +118,16 @@ class _FiltersScreenState extends State<FiltersScreen> {
             SizedBox(height: 20),
 
             // --- 2. Preferences ---
-            Text("Preferences", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(
+              "Preferences",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             SizedBox(height: 10),
             Row(
               children: [
-                _buildPreferenceCheckbox("Make Friends", _makeFriends, (bool? newValue) {
+                _buildPreferenceCheckbox("Make Friends", _makeFriends, (
+                  bool? newValue,
+                ) {
                   setState(() => _makeFriends = newValue ?? false);
                 }),
                 _buildPreferenceCheckbox("Dating", _dating, (bool? newValue) {
@@ -108,13 +136,23 @@ class _FiltersScreenState extends State<FiltersScreen> {
               ],
             ),
             SizedBox(height: 20),
-            
+
             // --- 3. Distance ---
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Distance", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                Text("${_distance.round()}km", style: TextStyle(color: primaryRed, fontSize: 16, fontWeight: FontWeight.bold)),
+                Text(
+                  "Distance",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "${_distance.round()}km",
+                  style: TextStyle(
+                    color: primaryRed,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
             Slider(
@@ -135,8 +173,18 @@ class _FiltersScreenState extends State<FiltersScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Age", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                Text("${_ageRange.start.round()}-${_ageRange.end.round()}", style: TextStyle(color: primaryRed, fontSize: 16, fontWeight: FontWeight.bold)),
+                Text(
+                  "Age",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "${_ageRange.start.round()}-${_ageRange.end.round()}",
+                  style: TextStyle(
+                    color: primaryRed,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
             RangeSlider(
@@ -146,7 +194,10 @@ class _FiltersScreenState extends State<FiltersScreen> {
               divisions: 42,
               activeColor: primaryRed,
               inactiveColor: primaryRed.withOpacity(0.3),
-              labels: RangeLabels(_ageRange.start.round().toString(), _ageRange.end.round().toString()),
+              labels: RangeLabels(
+                _ageRange.start.round().toString(),
+                _ageRange.end.round().toString(),
+              ),
               onChanged: (RangeValues values) {
                 setState(() => _ageRange = values);
               },
@@ -157,7 +208,10 @@ class _FiltersScreenState extends State<FiltersScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Online now", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(
+                  "Online now",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
                 Switch(
                   value: _onlineNow,
                   onChanged: (bool newValue) {
@@ -178,7 +232,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   child: OutlinedButton(
                     onPressed: () {
                       setState(() {
-                        _makeFriends = true; _dating = false;
+                        _makeFriends = true;
+                        _dating = false;
                         _distance = 10;
                         _ageRange = RangeValues(20, 25);
                         _onlineNow = false;
@@ -188,9 +243,17 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       foregroundColor: Colors.grey[600],
                       side: BorderSide(color: Colors.grey.shade300),
                       padding: EdgeInsets.symmetric(vertical: 15),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
-                    child: Text("Reset", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    child: Text(
+                      "Reset",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(width: 20),
@@ -203,9 +266,18 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: primaryPurple,
                       padding: EdgeInsets.symmetric(vertical: 15),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
-                    child: Text("Apply", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
+                    child: Text(
+                      "Apply",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ],

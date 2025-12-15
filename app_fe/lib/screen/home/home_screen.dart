@@ -7,7 +7,6 @@ import 'package:app_fe/screen/home/messages_screen.dart';
 import 'package:app_fe/widget/navbar.dart';
 import 'package:flutter/material.dart';
 
-
 class HomeFeedScreen extends StatefulWidget {
   @override
   _HomeFeedScreenState createState() => _HomeFeedScreenState();
@@ -21,7 +20,8 @@ class _HomeFeedScreenState extends State<HomeFeedScreen> {
     {
       'topic': 'Travel',
       'emoji': '🌴',
-      'question': 'If you could live anywhere in the world, where would you pick?',
+      'question':
+          'If you could live anywhere in the world, where would you pick?',
       'name': 'Miranda Kehlani',
       'location': 'STUTTGART',
       'color': Color(0xFFC371FF), // Tím
@@ -97,8 +97,20 @@ class _HomeFeedScreenState extends State<HomeFeedScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(item['name'], style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                        Text(item['location'], style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 12)),
+                        Text(
+                          item['name'],
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          item['location'],
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.7),
+                            fontSize: 12,
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -114,9 +126,18 @@ class _HomeFeedScreenState extends State<HomeFeedScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildInteractionButton(Icons.thumb_up, Colors.white.withOpacity(0.2)),
-                _buildInteractionButton(Icons.person, Colors.white.withOpacity(0.2)),
-                _buildInteractionButton(Icons.more_horiz, Colors.white.withOpacity(0.2)),
+                _buildInteractionButton(
+                  Icons.thumb_up,
+                  Colors.white.withOpacity(0.2),
+                ),
+                _buildInteractionButton(
+                  Icons.person,
+                  Colors.white.withOpacity(0.2),
+                ),
+                _buildInteractionButton(
+                  Icons.more_horiz,
+                  Colors.white.withOpacity(0.2),
+                ),
               ],
             ),
           ),
@@ -129,10 +150,7 @@ class _HomeFeedScreenState extends State<HomeFeedScreen> {
     return Container(
       width: 40,
       height: 40,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: color,
-      ),
+      decoration: BoxDecoration(shape: BoxShape.circle, color: color),
       child: Icon(icon, color: Colors.white, size: 20),
     );
   }
@@ -147,7 +165,10 @@ class _HomeFeedScreenState extends State<HomeFeedScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('JustTangles', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+              Text(
+                'JustTangles',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
               Icon(Icons.notifications_none, color: Colors.black),
             ],
           ),
@@ -172,14 +193,24 @@ class _HomeFeedScreenState extends State<HomeFeedScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
           child: Row(
             children: [
-              _buildTabButton(context, 'Make Friends', isSelected: true, onTap: () {}),
-              _buildTabButton(context, 'Search Partners', isSelected: false, onTap: () {
-                // Chuyển sang màn hình Swiping
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeSwipeScreen()),
-                );
-              }),
+              _buildTabButton(
+                context,
+                'Make Friends',
+                isSelected: true,
+                onTap: () {},
+              ),
+              _buildTabButton(
+                context,
+                'Search Partners',
+                isSelected: false,
+                onTap: () {
+                  // Chuyển sang màn hình Swiping
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeSwipeScreen()),
+                  );
+                },
+              ),
             ],
           ),
         ),
@@ -187,7 +218,11 @@ class _HomeFeedScreenState extends State<HomeFeedScreen> {
     );
   }
 
-  Widget _buildStoryCircle(String name, {bool hasAdd = false, required bool isRedBorder}) {
+  Widget _buildStoryCircle(
+    String name, {
+    bool hasAdd = false,
+    required bool isRedBorder,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Column(
@@ -228,7 +263,12 @@ class _HomeFeedScreenState extends State<HomeFeedScreen> {
     );
   }
 
-  Widget _buildTabButton(BuildContext context, String text, {required bool isSelected, required VoidCallback onTap}) {
+  Widget _buildTabButton(
+    BuildContext context,
+    String text, {
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
     return Expanded(
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 4),
@@ -258,57 +298,55 @@ class _HomeFeedScreenState extends State<HomeFeedScreen> {
           _buildHeader(context),
           Expanded(
             child: SingleChildScrollView(
-              child: Column(
-                children: feedItems.map(_buildFeedCard).toList(),
-              ),
+              child: Column(children: feedItems.map(_buildFeedCard).toList()),
             ),
           ),
         ],
       ),
-//      bottomNavigationBar: NavbarWidget(
-//   selectedIndex: _selectedIndex,
-//   onItemTapped: (index) {
-//     if (index == _selectedIndex) return;
 
-//     setState(() {
-//       _selectedIndex = index;
-//     });
+      //      bottomNavigationBar: NavbarWidget(
+      //   selectedIndex: _selectedIndex,
+      //   onItemTapped: (index) {
+      //     if (index == _selectedIndex) return;
 
-//     switch (index) {
-//       case 0:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => HomeFeedScreen()),
-//         );
-//         break;
+      //     setState(() {
+      //       _selectedIndex = index;
+      //     });
 
-//       case 1:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => DiscoverScreen()),
-//         );
-//         break;
+      //     switch (index) {
+      //       case 0:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => HomeFeedScreen()),
+      //         );
+      //         break;
 
-//       case 3:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => MatchesScreen()),
-//         );
-//         break;
+      //       case 1:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => DiscoverScreen()),
+      //         );
+      //         break;
 
-//       case 4:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => MessagesScreen()),
-//         );
-//         break;
+      //       case 3:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => MatchesScreen()),
+      //         );
+      //         break;
 
-//       default:
-//         break;
-//     }
-//   },
-// ),
+      //       case 4:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => MessagesScreen()),
+      //         );
+      //         break;
 
+      //       default:
+      //         break;
+      //     }
+      //   },
+      // ),
     );
   }
 }

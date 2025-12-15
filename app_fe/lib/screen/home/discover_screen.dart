@@ -377,9 +377,11 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                     InkWell(
                       onTap: () {
                         Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => DiscoverByInterestScreen()),
-        );
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DiscoverByInterestScreen(),
+                          ),
+                        );
                       },
                       child: Text(
                         'View all',
@@ -419,49 +421,49 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
           ),
         ),
       ),
-//       bottomNavigationBar: NavbarWidget(
-//   selectedIndex: _selectedIndex,
-//   onItemTapped: (index) {
-//     if (index == _selectedIndex) return;
+      //       bottomNavigationBar: NavbarWidget(
+      //   selectedIndex: _selectedIndex,
+      //   onItemTapped: (index) {
+      //     if (index == _selectedIndex) return;
 
-//     setState(() {
-//       _selectedIndex = index;
-//     });
+      //     setState(() {
+      //       _selectedIndex = index;
+      //     });
 
-//     switch (index) {
-//       case 0:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => HomeFeedScreen()),
-//         );
-//         break;
+      //     switch (index) {
+      //       case 0:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => HomeFeedScreen()),
+      //         );
+      //         break;
 
-//       case 1:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => DiscoverScreen()),
-//         );
-//         break;
+      //       case 1:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => DiscoverScreen()),
+      //         );
+      //         break;
 
-//       case 3:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => MatchesScreen()),
-//         );
-//         break;
+      //       case 3:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => MatchesScreen()),
+      //         );
+      //         break;
 
-//       case 4:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => MessagesScreen()),
-//         );
-//         break;
+      //       case 4:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => MessagesScreen()),
+      //         );
+      //         break;
 
-//       default:
-//         break;
-//     }
-//   },
-// ),
+      //       default:
+      //         break;
+      //     }
+      //   },
+      // ),
     );
   }
 }

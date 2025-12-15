@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
         // Màu nền cam đỏ chuyển màu
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFFF5F6D), Color(0xFFFFC371)], 
+            colors: [Color(0xFFFF5F6D), Color(0xFFFFC371)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -38,11 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               // Icon mô phỏng
-              Icon(
-                Icons.chat_bubble_outline,
-                color: Colors.white,
-                size: 36,
-              ),
+              Icon(Icons.chat_bubble_outline, color: Colors.white, size: 36),
               SizedBox(width: 8),
               // Text "JustTangle"
               Text(

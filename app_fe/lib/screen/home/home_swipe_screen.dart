@@ -1,5 +1,6 @@
 import 'package:app_fe/screen/home/discover_screen.dart';
 import 'package:app_fe/screen/home/home_screen.dart';
+import 'package:app_fe/screen/home/mainscreen.dart';
 import 'package:app_fe/screen/home/matches_screen.dart';
 import 'package:app_fe/screen/home/messages_screen.dart';
 import 'package:app_fe/widget/navbar.dart';
@@ -65,7 +66,9 @@ class _HomeSwipeScreenState extends State<HomeSwipeScreen> {
 
   // ================= CARD UI (GIỮ NGUYÊN THIẾT KẾ CỦA BẠN) =================
   Widget _buildProfileCard(
-      BuildContext context, Map<String, dynamic> profileData) {
+    BuildContext context,
+    Map<String, dynamic> profileData,
+  ) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
       decoration: BoxDecoration(
@@ -134,14 +137,17 @@ class _HomeSwipeScreenState extends State<HomeSwipeScreen> {
                   children: [
                     Icon(Icons.person, color: Colors.white, size: 18),
                     SizedBox(width: 4),
-                    Text(profileData['twitter'],
-                        style: TextStyle(color: Colors.white)),
+                    Text(
+                      profileData['twitter'],
+                      style: TextStyle(color: Colors.white),
+                    ),
                     SizedBox(width: 15),
-                    Icon(Icons.camera_alt,
-                        color: Colors.white, size: 18),
+                    Icon(Icons.camera_alt, color: Colors.white, size: 18),
                     SizedBox(width: 4),
-                    Text(profileData['instagram'],
-                        style: TextStyle(color: Colors.white)),
+                    Text(
+                      profileData['instagram'],
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ],
                 ),
               ],
@@ -187,13 +193,12 @@ class _HomeSwipeScreenState extends State<HomeSwipeScreen> {
               child: SwipeCards(
                 matchEngine: _matchEngine,
                 itemBuilder: (context, index) {
-                  return _buildProfileCard(
-                      context, profiles[index]);
+                  return _buildProfileCard(context, profiles[index]);
                 },
                 onStackFinished: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Hết người để vuốt")),
-                  );
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text("Hết người để vuốt")));
                 },
                 upSwipeAllowed: true,
                 fillSpace: true,
@@ -204,50 +209,50 @@ class _HomeSwipeScreenState extends State<HomeSwipeScreen> {
           ],
         ),
       ),
-//       bottomNavigationBar: NavbarWidget(
-//   selectedIndex: _selectedIndex,
-//   onItemTapped: (index) {
-//     if (index == _selectedIndex) return;
 
-//     setState(() {
-//       _selectedIndex = index;
-//     });
+      //       bottomNavigationBar: NavbarWidget(
+      //   selectedIndex: _selectedIndex,
+      //   onItemTapped: (index) {
+      //     if (index == _selectedIndex) return;
 
-//     switch (index) {
-//       case 0:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => HomeFeedScreen()),
-//         );
-//         break;
+      //     setState(() {
+      //       _selectedIndex = index;
+      //     });
 
-//       case 1:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => DiscoverScreen()),
-//         );
-//         break;
+      //     switch (index) {
+      //       case 0:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => HomeFeedScreen()),
+      //         );
+      //         break;
 
-//       case 3:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => MatchesScreen()),
-//         );
-//         break;
+      //       case 1:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => DiscoverScreen()),
+      //         );
+      //         break;
 
-//       case 4:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => MessagesScreen()),
-//         );
-//         break;
+      //       case 3:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => MatchesScreen()),
+      //         );
+      //         break;
 
-//       default:
-//         break;
-//     }
-//   },
-// ),
+      //       case 4:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => MessagesScreen()),
+      //         );
+      //         break;
 
+      //       default:
+      //         break;
+      //     }
+      //   },
+      // ),
     );
   }
 
@@ -258,20 +263,33 @@ class _HomeSwipeScreenState extends State<HomeSwipeScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _circleButton(Icons.close, Colors.grey.shade400,
-              () => _matchEngine.currentItem?.nope()),
-          _circleButton(Icons.star, Color(0xFF9B59B6),
-              () => _matchEngine.currentItem?.superLike(),
-              size: 70),
-          _circleButton(Icons.favorite, Color(0xFFFF5F6D),
-              () => _matchEngine.currentItem?.like()),
+          _circleButton(
+            Icons.close,
+            Colors.grey.shade400,
+            () => _matchEngine.currentItem?.nope(),
+          ),
+          _circleButton(
+            Icons.star,
+            Color(0xFF9B59B6),
+            () => _matchEngine.currentItem?.superLike(),
+            size: 70,
+          ),
+          _circleButton(
+            Icons.favorite,
+            Color(0xFFFF5F6D),
+            () => _matchEngine.currentItem?.like(),
+          ),
         ],
       ),
     );
   }
 
-  Widget _circleButton(IconData icon, Color color, VoidCallback onTap,
-      {double size = 50}) {
+  Widget _circleButton(
+    IconData icon,
+    Color color,
+    VoidCallback onTap, {
+    double size = 50,
+  }) {
     return Container(
       width: size,
       height: size,
@@ -279,10 +297,7 @@ class _HomeSwipeScreenState extends State<HomeSwipeScreen> {
         shape: BoxShape.circle,
         color: Colors.white,
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-          ),
+          BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 10),
         ],
       ),
       child: IconButton(
@@ -294,7 +309,7 @@ class _HomeSwipeScreenState extends State<HomeSwipeScreen> {
 
   // ================= HEADER + APP BAR (GIỮ NGUYÊN) =================
   // 👉 mình giữ nguyên logic của bạn (rút gọn cho đỡ dài)
- Widget _buildHeader(BuildContext context) {
+  Widget _buildHeader(BuildContext context) {
     return Column(
       children: [
         // App Bar & Notifications
@@ -338,7 +353,7 @@ class _HomeSwipeScreenState extends State<HomeSwipeScreen> {
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => HomeFeedScreen()),
+                    MaterialPageRoute(builder: (context) => MainScreen()),
                   );
                 },
               ),
@@ -347,7 +362,7 @@ class _HomeSwipeScreenState extends State<HomeSwipeScreen> {
                 'Search Partners',
                 isSelected: true,
                 onTap: () {
-                  // Chuyển sang màn hình Swiping
+               
                 },
               ),
             ],
@@ -356,7 +371,8 @@ class _HomeSwipeScreenState extends State<HomeSwipeScreen> {
       ],
     );
   }
-   Widget _buildTabButton(
+
+  Widget _buildTabButton(
     BuildContext context,
     String text, {
     required bool isSelected,
@@ -382,7 +398,7 @@ class _HomeSwipeScreenState extends State<HomeSwipeScreen> {
     );
   }
 
- Widget _buildStoryCircle(
+  Widget _buildStoryCircle(
     String name, {
     bool hasAdd = false,
     required bool isRedBorder,
@@ -426,6 +442,7 @@ class _HomeSwipeScreenState extends State<HomeSwipeScreen> {
       ),
     );
   }
+
   Widget _buildCustomAppBar() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),

@@ -1,10 +1,8 @@
-
 // File: lib/onboarding_birthdate_screen.dart
 
 import 'package:app_fe/widget/onboarding_base.dart';
 import 'package:flutter/material.dart';
 import 'onboarding_gender_screen.dart';
-
 
 class OnboardingBirthdateScreen extends StatelessWidget {
   @override
@@ -22,10 +20,16 @@ class OnboardingBirthdateScreen extends StatelessWidget {
               hintText: '20/10/20', // Placeholder
               contentPadding: EdgeInsets.only(bottom: 5),
               enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Theme.of(context).hintColor, width: 2),
+                borderSide: BorderSide(
+                  color: Theme.of(context).hintColor,
+                  width: 2,
+                ),
               ),
               focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Theme.of(context).hintColor, width: 2),
+                borderSide: BorderSide(
+                  color: Theme.of(context).hintColor,
+                  width: 2,
+                ),
               ),
             ),
             keyboardType: TextInputType.none, // Vô hiệu hóa bàn phím mặc định
@@ -78,7 +82,11 @@ class OnboardingBirthdateScreen extends StatelessWidget {
           height: 60,
           child: Text(
             key,
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.w400, color: Colors.black),
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.w400,
+              color: Colors.black,
+            ),
           ),
         );
       }).toList(),

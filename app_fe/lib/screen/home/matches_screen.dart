@@ -1,12 +1,12 @@
 // File: lib/screen/main/matches_screen.dart
 
+import 'package:app_fe/screen/home/account_profile_screen.dart';
 import 'package:app_fe/screen/home/discover_screen.dart';
 import 'package:app_fe/screen/home/home_screen.dart';
 import 'package:app_fe/screen/home/messages_screen.dart';
 import 'package:app_fe/screen/home/profile_detail_screen.dart';
 import 'package:app_fe/widget/navbar.dart';
 import 'package:flutter/material.dart';
-
 
 class MatchesScreen extends StatefulWidget {
   @override
@@ -15,24 +15,65 @@ class MatchesScreen extends StatefulWidget {
 
 class _MatchesScreenState extends State<MatchesScreen> {
   // Index 3 đại diện cho tab Matches/People trên Navbar
-  int _selectedIndex = 3; 
-  
+  int _selectedIndex = 3;
+
   // Màu sắc chính
   final Color primaryRed = Color(0xFFFF5F6D);
   final Color primaryPurple = Color(0xFF5F0F40);
 
   // Dữ liệu mô phỏng các Matches
   final List<Map<String, dynamic>> matchData = [
-    {"name": "James, 20", "location": "HANOVER", "distance": "1.3 km away", "match_percent": 100, "color": Color(0xFF5F0F40)},
-    {"name": "Eddie, 23", "location": "DORTMUND", "distance": "2 km away", "match_percent": 94, "color": Colors.grey},
-    {"name": "Brandon, 20", "location": "HANOVER", "distance": "2.5 km away", "match_percent": 89, "color": Colors.grey},
-    {"name": "Alfredo, 20", "location": "DORTMUND", "distance": "2.5 km away", "match_percent": 80, "color": Colors.grey},
-    {"name": "Clara, 19", "location": "BERLIN", "distance": "1.5 km away", "match_percent": 72, "color": Colors.grey},
-    {"name": "Fabian, 21", "location": "MUNICH", "distance": "3 km away", "match_percent": 68, "color": Colors.grey},
+    {
+      "name": "James, 20",
+      "location": "HANOVER",
+      "distance": "1.3 km away",
+      "match_percent": 100,
+      "color": Color(0xFF5F0F40),
+    },
+    {
+      "name": "Eddie, 23",
+      "location": "DORTMUND",
+      "distance": "2 km away",
+      "match_percent": 94,
+      "color": Colors.grey,
+    },
+    {
+      "name": "Brandon, 20",
+      "location": "HANOVER",
+      "distance": "2.5 km away",
+      "match_percent": 89,
+      "color": Colors.grey,
+    },
+    {
+      "name": "Alfredo, 20",
+      "location": "DORTMUND",
+      "distance": "2.5 km away",
+      "match_percent": 80,
+      "color": Colors.grey,
+    },
+    {
+      "name": "Clara, 19",
+      "location": "BERLIN",
+      "distance": "1.5 km away",
+      "match_percent": 72,
+      "color": Colors.grey,
+    },
+    {
+      "name": "Fabian, 21",
+      "location": "MUNICH",
+      "distance": "3 km away",
+      "match_percent": 68,
+      "color": Colors.grey,
+    },
   ];
 
   // --- Widget Thống kê Likes/Connects ---
-  Widget _buildStatPill({required IconData icon, required String label, required int count, required Color color}) {
+  Widget _buildStatPill({
+    required IconData icon,
+    required String label,
+    required int count,
+    required Color color,
+  }) {
     return Column(
       children: [
         Container(
@@ -47,24 +88,35 @@ class _MatchesScreenState extends State<MatchesScreen> {
         ),
         SizedBox(height: 8),
         Text(label, style: TextStyle(fontSize: 14, color: Colors.grey[700])),
-        Text(count.toString(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black)),
+        Text(
+          count.toString(),
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
       ],
     );
   }
 
   // --- Widget Match Card trong Grid ---
   Widget _buildMatchCard(Map<String, dynamic> data) {
-    final Color topColor = data['color'] == Colors.grey ? primaryRed : primaryPurple;
+    final Color topColor = data['color'] == Colors.grey
+        ? primaryRed
+        : primaryPurple;
     final bool isDarkBackground = data['color'] != Colors.grey;
 
     return Material(
       color: Colors.transparent,
       child: InkWell(
         borderRadius: BorderRadius.circular(15),
-        onTap: (){Navigator.pushReplacement(
+        onTap: () {
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => ProfileDetailScreen()),
-          );},
+          );
+        },
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -84,13 +136,16 @@ class _MatchesScreenState extends State<MatchesScreen> {
               children: [
                 // Placeholder Ảnh
                 Container(color: Colors.grey.shade300),
-        
+
                 // Gradient ở dưới (Nơi chứa text)
                 Positioned.fill(
                   child: Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Colors.transparent, primaryPurple.withOpacity(0.9)],
+                        colors: [
+                          Colors.transparent,
+                          primaryPurple.withOpacity(0.9),
+                        ],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         stops: [0.5, 1.0],
@@ -98,7 +153,7 @@ class _MatchesScreenState extends State<MatchesScreen> {
                     ),
                   ),
                 ),
-        
+
                 // Metadata
                 Positioned(
                   bottom: 15,
@@ -107,20 +162,43 @@ class _MatchesScreenState extends State<MatchesScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(data['distance'], style: TextStyle(color: Colors.white, fontSize: 12)),
+                      Text(
+                        data['distance'],
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      ),
                       SizedBox(height: 4),
                       Row(
                         children: [
-                          Text(data['name'], style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+                          Text(
+                            data['name'],
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           SizedBox(width: 4),
-                          Container(width: 6, height: 6, decoration: BoxDecoration(shape: BoxShape.circle, color: primaryRed)),
+                          Container(
+                            width: 6,
+                            height: 6,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: primaryRed,
+                            ),
+                          ),
                         ],
                       ),
-                      Text(data['location'], style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 12)),
+                      Text(
+                        data['location'],
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(0.8),
+                          fontSize: 12,
+                        ),
+                      ),
                     ],
                   ),
                 ),
-        
+
                 // Match Percentage Banner (Top Right)
                 Positioned(
                   top: 0,
@@ -136,7 +214,11 @@ class _MatchesScreenState extends State<MatchesScreen> {
                     ),
                     child: Text(
                       '${data['match_percent']}% Match',
-                      style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -151,14 +233,13 @@ class _MatchesScreenState extends State<MatchesScreen> {
   // --- Logic Navigation Navbar ---
   void _onItemTapped(int index) {
     if (index == _selectedIndex) return;
-    
+
     // Xử lý chuyển trang giữa các màn hình chính (Giả định HomeFeedScreen là index 0)
     // Nếu bạn muốn navigation đầy đủ, cần thêm logic cho index 0, 1, 2, 4
     // Ví dụ: if (index == 0) { Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeFeedScreen())); }
-    
+
     setState(() => _selectedIndex = index);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -171,14 +252,21 @@ class _MatchesScreenState extends State<MatchesScreen> {
         ),
         title: Text(
           "Matches",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
         ),
         centerTitle: true,
         actions: [
           IconButton(
-            icon: Icon(Icons.tune, color: Colors.grey[700]),
+            icon: Icon(Icons.person, color: const Color.fromARGB(255, 172, 5, 144),size: 40,),
             onPressed: () {
-              // Mở Filters nếu có
+              Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => AccountProfileScreen()),
+                  );
             },
           ),
         ],
@@ -213,13 +301,18 @@ class _MatchesScreenState extends State<MatchesScreen> {
             // --- Your Matches Title ---
             Text(
               "Your Matches 47",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black87),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
             ),
             SizedBox(height: 20),
 
             // --- Matches Grid ---
             GridView.builder(
-              physics: NeverScrollableScrollPhysics(), // Vô hiệu hóa cuộn trong GridView
+              physics:
+                  NeverScrollableScrollPhysics(), // Vô hiệu hóa cuộn trong GridView
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
@@ -236,49 +329,49 @@ class _MatchesScreenState extends State<MatchesScreen> {
           ],
         ),
       ),
-//       bottomNavigationBar: NavbarWidget(
-//   selectedIndex: _selectedIndex,
-//   onItemTapped: (index) {
-//     if (index == _selectedIndex) return;
+      //       bottomNavigationBar: NavbarWidget(
+      //   selectedIndex: _selectedIndex,
+      //   onItemTapped: (index) {
+      //     if (index == _selectedIndex) return;
 
-//     setState(() {
-//       _selectedIndex = index;
-//     });
+      //     setState(() {
+      //       _selectedIndex = index;
+      //     });
 
-//     switch (index) {
-//       case 0:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => HomeFeedScreen()),
-//         );
-//         break;
+      //     switch (index) {
+      //       case 0:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => HomeFeedScreen()),
+      //         );
+      //         break;
 
-//       case 1:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => DiscoverScreen()),
-//         );
-//         break;
+      //       case 1:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => DiscoverScreen()),
+      //         );
+      //         break;
 
-//       case 3:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => MatchesScreen()),
-//         );
-//         break;
+      //       case 3:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => MatchesScreen()),
+      //         );
+      //         break;
 
-//       case 4:
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (_) => MessagesScreen()),
-//         );
-//         break;
+      //       case 4:
+      //         Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(builder: (_) => MessagesScreen()),
+      //         );
+      //         break;
 
-//       default:
-//         break;
-//     }
-//   },
-// ),
+      //       default:
+      //         break;
+      //     }
+      //   },
+      // ),
     );
   }
 }

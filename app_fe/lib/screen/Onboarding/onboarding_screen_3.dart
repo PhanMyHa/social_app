@@ -17,7 +17,10 @@ class OnboardingScreen3 extends StatelessWidget {
             height: 150,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: Color(0xFFFFC371).withOpacity(0.5), width: 2),
+              border: Border.all(
+                color: Color(0xFFFFC371).withOpacity(0.5),
+                width: 2,
+              ),
             ),
           ),
           // Vòng tròn giữa
@@ -40,12 +43,32 @@ class OnboardingScreen3 extends StatelessWidget {
           ),
 
           // Các điểm vị trí (Markers)
-          _buildMapMarker(Alignment(0.8, -0.7), Colors.grey.withOpacity(0.5), null),
-          _buildMapMarker(Alignment(-0.5, 0.9), Colors.grey.withOpacity(0.5), null),
-          _buildMapMarker(Alignment(-0.9, -0.3), Colors.grey.withOpacity(0.5), null),
-          _buildMapMarker(Alignment(0.5, 0.2), Colors.grey.withOpacity(0.5), null),
+          _buildMapMarker(
+            Alignment(0.8, -0.7),
+            Colors.grey.withOpacity(0.5),
+            null,
+          ),
+          _buildMapMarker(
+            Alignment(-0.5, 0.9),
+            Colors.grey.withOpacity(0.5),
+            null,
+          ),
+          _buildMapMarker(
+            Alignment(-0.9, -0.3),
+            Colors.grey.withOpacity(0.5),
+            null,
+          ),
+          _buildMapMarker(
+            Alignment(0.5, 0.2),
+            Colors.grey.withOpacity(0.5),
+            null,
+          ),
           // Icon đỏ
-          _buildMapMarker(Alignment(0.0, -0.9), Color(0xFFFF5F6D), Icons.location_on), 
+          _buildMapMarker(
+            Alignment(0.0, -0.9),
+            Color(0xFFFF5F6D),
+            Icons.location_on,
+          ),
         ],
       ),
     );
@@ -56,18 +79,11 @@ class OnboardingScreen3 extends StatelessWidget {
     return Align(
       alignment: alignment,
       child: icon != null
-          ? Icon(
-              icon,
-              color: color,
-              size: 24,
-            )
+          ? Icon(icon, color: color, size: 24)
           : Container(
               width: 15,
               height: 15,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: color,
-              ),
+              decoration: BoxDecoration(shape: BoxShape.circle, color: color),
             ),
     );
   }
@@ -87,17 +103,17 @@ class OnboardingScreen3 extends StatelessWidget {
       child: ElevatedButton.icon(
         onPressed: onPressed,
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.resolveWith<Color>(
-            (Set<MaterialState> states) {
-              if (states.contains(MaterialState.pressed)) {
-                // Hiệu ứng dễ thương: tối màu hơn một chút khi nhấn
-                return backgroundColor == Colors.white 
-                       ? Colors.grey.shade100 
-                       : backgroundColor.withOpacity(0.9); 
-              }
-              return backgroundColor;
-            },
-          ),
+          backgroundColor: MaterialStateProperty.resolveWith<Color>((
+            Set<MaterialState> states,
+          ) {
+            if (states.contains(MaterialState.pressed)) {
+              // Hiệu ứng dễ thương: tối màu hơn một chút khi nhấn
+              return backgroundColor == Colors.white
+                  ? Colors.grey.shade100
+                  : backgroundColor.withOpacity(0.9);
+            }
+            return backgroundColor;
+          }),
           foregroundColor: MaterialStateProperty.all<Color>(textColor),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
@@ -109,9 +125,9 @@ class OnboardingScreen3 extends StatelessWidget {
           ),
           elevation: MaterialStateProperty.all<double>(0),
           overlayColor: MaterialStateProperty.all<Color>(
-            backgroundColor == Colors.white 
-              ? Colors.grey.withOpacity(0.1) 
-              : Colors.white.withOpacity(0.15)
+            backgroundColor == Colors.white
+                ? Colors.grey.withOpacity(0.1)
+                : Colors.white.withOpacity(0.15),
           ),
         ),
         icon: Icon(icon, color: textColor),
@@ -147,11 +163,12 @@ class OnboardingScreen3 extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: _buildMapGraphic(),
-          ),
+          Expanded(child: _buildMapGraphic()),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 40.0,
+              vertical: 20.0,
+            ),
             child: Column(
               children: [
                 Text(
@@ -176,7 +193,7 @@ class OnboardingScreen3 extends StatelessWidget {
                 ),
                 // Nút "Login with Google"
                 _buildLoginButton(
-                  icon: Icons.alternate_email, 
+                  icon: Icons.alternate_email,
                   text: 'Login with Google',
                   backgroundColor: Colors.white,
                   textColor: Colors.grey[800]!,
@@ -202,14 +219,19 @@ class OnboardingScreen3 extends StatelessWidget {
                         // CHUYỂN TRANG: Đã sửa để dùng file import sẵn
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SignupScreen()),
+                          MaterialPageRoute(
+                            builder: (context) => SignupScreen(),
+                          ),
                         );
                       },
                       // Thêm hiệu ứng dễ thương cho TextLink
                       borderRadius: BorderRadius.circular(5),
                       splashColor: accentColor.withOpacity(0.1),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 4.0,
+                          vertical: 2.0,
+                        ),
                         child: Text(
                           'Sign Up',
                           style: TextStyle(

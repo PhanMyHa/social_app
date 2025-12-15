@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'onboarding_interests_screen.dart';
 
-
 class OnboardingGenderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -46,7 +45,8 @@ class OnboardingGenderScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildGenderOption(BuildContext context, {
+  Widget _buildGenderOption(
+    BuildContext context, {
     required IconData icon,
     required String label,
     required bool isSelected,

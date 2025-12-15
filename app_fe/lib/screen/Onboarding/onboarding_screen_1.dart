@@ -24,11 +24,8 @@ class OnboardingScreen1 extends StatelessWidget {
             height: size,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.grey.withOpacity(0.2), 
-              border: Border.all(
-                color: borderColor,
-                width: 3.0,
-              ),
+              color: Colors.grey.withOpacity(0.2),
+              border: Border.all(color: borderColor, width: 3.0),
             ),
           ),
           SizedBox(height: 4),
@@ -60,10 +57,7 @@ class OnboardingScreen1 extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(icon, color: Color(0xFF9B59B6), size: 18),
-          Text(
-            text,
-            style: TextStyle(color: Colors.grey[700], fontSize: 12),
-          ),
+          Text(text, style: TextStyle(color: Colors.grey[700], fontSize: 12)),
         ],
       ),
     );
@@ -112,7 +106,10 @@ class OnboardingScreen1 extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 40.0,
+              vertical: 20.0,
+            ),
             child: Column(
               children: [
                 Text(
@@ -128,10 +125,7 @@ class OnboardingScreen1 extends StatelessWidget {
                 Text(
                   'Interact with people with the same interest like you',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey[600],
-                  ),
+                  style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                 ),
                 SizedBox(height: 40),
                 // Nút "Continue" -> Chuyển sang màn hình 2
@@ -142,7 +136,9 @@ class OnboardingScreen1 extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => OnboardingScreen2()),
+                        MaterialPageRoute(
+                          builder: (context) => OnboardingScreen2(),
+                        ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -168,7 +164,9 @@ class OnboardingScreen1 extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => OnboardingScreen3()),
+                      MaterialPageRoute(
+                        builder: (context) => OnboardingScreen3(),
+                      ),
                     );
                   },
                   child: Text(

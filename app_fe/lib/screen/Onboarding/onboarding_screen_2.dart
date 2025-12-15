@@ -85,11 +85,12 @@ class OnboardingScreen2 extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: _buildMatchGraphic(),
-          ),
+          Expanded(child: _buildMatchGraphic()),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 40.0,
+              vertical: 20.0,
+            ),
             child: Column(
               children: [
                 Text(
@@ -105,10 +106,7 @@ class OnboardingScreen2 extends StatelessWidget {
                 Text(
                   'Join us with other millions of people and find your best matches',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey[600],
-                  ),
+                  style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                 ),
                 SizedBox(height: 40),
                 // Nút "Continue" -> Chuyển sang màn hình 3
@@ -119,7 +117,9 @@ class OnboardingScreen2 extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => OnboardingScreen3()),
+                        MaterialPageRoute(
+                          builder: (context) => OnboardingScreen3(),
+                        ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -145,7 +145,9 @@ class OnboardingScreen2 extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => OnboardingScreen3()),
+                      MaterialPageRoute(
+                        builder: (context) => OnboardingScreen3(),
+                      ),
                     );
                   },
                   child: Text(

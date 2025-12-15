@@ -4,7 +4,6 @@ import 'package:app_fe/widget/onboarding_base.dart';
 import 'package:flutter/material.dart';
 import 'onboarding_photos_screen.dart';
 
-
 class OnboardingInterestsScreen extends StatelessWidget {
   final List<Map<String, dynamic>> interests = [
     {'label': 'Language', 'icon': Icons.language, 'isSelected': false},
@@ -22,7 +21,11 @@ class OnboardingInterestsScreen extends StatelessWidget {
     {'label': 'Football', 'icon': Icons.sports_soccer, 'isSelected': false},
     {'label': 'People', 'icon': Icons.people, 'isSelected': false},
     {'label': 'Animals', 'icon': Icons.pets, 'isSelected': true},
-    {'label': 'Gym & Fitness', 'icon': Icons.fitness_center, 'isSelected': false},
+    {
+      'label': 'Gym & Fitness',
+      'icon': Icons.fitness_center,
+      'isSelected': false,
+    },
   ];
 
   @override
@@ -58,7 +61,8 @@ class OnboardingInterestsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildInterestChip(BuildContext context, {
+  Widget _buildInterestChip(
+    BuildContext context, {
     required String label,
     required IconData icon,
     required bool isSelected,
@@ -68,11 +72,7 @@ class OnboardingInterestsScreen extends StatelessWidget {
     Color textColor = isSelected ? Colors.white : Colors.grey.shade700;
 
     return Chip(
-      avatar: Icon(
-        icon,
-        size: 16,
-        color: textColor,
-      ),
+      avatar: Icon(icon, size: 16, color: textColor),
       label: Text(
         label,
         style: TextStyle(
@@ -80,7 +80,9 @@ class OnboardingInterestsScreen extends StatelessWidget {
           fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
         ),
       ),
-      backgroundColor: isSelected ? selectedColor : defaultColor.withOpacity(0.5),
+      backgroundColor: isSelected
+          ? selectedColor
+          : defaultColor.withOpacity(0.5),
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),

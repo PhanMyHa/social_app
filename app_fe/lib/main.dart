@@ -3,7 +3,6 @@
 import 'package:app_fe/screen/Onboarding/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-
 void main() {
   runApp(MyApp());
 }

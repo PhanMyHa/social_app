@@ -1,5 +1,7 @@
 // File: lib/screen/main/profile_detail_screen.dart
 
+import 'package:app_fe/screen/home/mainscreen.dart';
+import 'package:app_fe/screen/home/match_success_screen.dart';
 import 'package:app_fe/screen/home/matches_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -173,9 +175,7 @@ class ProfileDetailScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => MatchesScreen(),
-                          ),
+                          MaterialPageRoute(builder: (context) => MainScreen()),
                         );
                       },
                     ),
@@ -265,12 +265,14 @@ class ProfileDetailScreen extends StatelessWidget {
                           size: 50,
                         ),
                         SizedBox(width: 20),
-                        _buildActionButton(
-                          Icons.favorite,
-                          primaryRed,
-                          () {},
-                          size: 70,
-                        ),
+                        _buildActionButton(Icons.favorite, primaryRed, () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MatchSuccessScreen(),
+                            ),
+                          );
+                        }, size: 70),
                       ],
                     ),
                   ),

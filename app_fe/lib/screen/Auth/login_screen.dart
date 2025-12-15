@@ -20,12 +20,17 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('Welcome back!', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+            Text(
+              'Welcome back!',
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            ),
             SizedBox(height: 40),
             TextField(
               decoration: InputDecoration(
                 labelText: 'Email',
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
               keyboardType: TextInputType.emailAddress,
             ),
@@ -33,7 +38,9 @@ class LoginScreen extends StatelessWidget {
             TextField(
               decoration: InputDecoration(
                 labelText: 'Password',
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
               obscureText: true,
             ),
@@ -44,7 +51,9 @@ class LoginScreen extends StatelessWidget {
                 // Dùng pushReplacement để người dùng không quay lại màn hình login/signup
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => OnboardingNameScreen()),
+                  MaterialPageRoute(
+                    builder: (context) => OnboardingNameScreen(),
+                  ),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -54,7 +63,10 @@ class LoginScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: Text('Login', style: TextStyle(fontSize: 18, color: Colors.white)),
+              child: Text(
+                'Login',
+                style: TextStyle(fontSize: 18, color: Colors.white),
+              ),
             ),
             SizedBox(height: 20),
             TextButton(

@@ -41,14 +41,14 @@ class _NavbarWidgetState extends State<NavbarWidget> {
       Icon(Icons.home, size: 30, color: primaryColor),
       Icon(Icons.explore, size: 30, color: primaryColor),
       Icon(Icons.add_circle_outline, size: 36, color: primaryColor),
-      Icon(Icons.people, size: 30, color: primaryColor),
       Icon(Icons.chat_bubble, size: 30, color: primaryColor),
+      Icon(Icons.people, size: 30, color: primaryColor),
     ];
 
     return Theme(
-      data: Theme.of(context).copyWith(
-        iconTheme: const IconThemeData(color: primaryColor),
-      ),
+      data: Theme.of(
+        context,
+      ).copyWith(iconTheme: const IconThemeData(color: primaryColor)),
       child: Container(
         // Shadow giúp cảm giác mượt hơn (như code 2)
         decoration: BoxDecoration(
@@ -100,8 +100,9 @@ class _HomeWithNavbarState extends State<HomeWithNavbar> {
     Center(child: Text('Home', style: TextStyle(fontSize: 24))),
     Center(child: Text('Explore', style: TextStyle(fontSize: 24))),
     Center(child: Text('Add', style: TextStyle(fontSize: 24))),
-    Center(child: Text('People', style: TextStyle(fontSize: 24))),
+    
     Center(child: Text('Chat', style: TextStyle(fontSize: 24))),
+    Center(child: Text('People', style: TextStyle(fontSize: 24))),
   ];
 
   @override

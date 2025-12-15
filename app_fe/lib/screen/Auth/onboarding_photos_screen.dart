@@ -4,7 +4,6 @@ import 'package:app_fe/widget/onboarding_base.dart';
 import 'package:flutter/material.dart';
 import 'verification_dialog.dart';
 
-
 class OnboardingPhotosScreen extends StatelessWidget {
   // Widget mô phỏng khung ảnh
   Widget _buildPhotoFrame(BuildContext context, {bool isMain = false}) {
@@ -81,7 +80,10 @@ class OnboardingPhotosScreen extends StatelessWidget {
             icon: Icon(Icons.camera_alt, color: primaryColor),
             label: Text(
               'Change Photos',
-              style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           SizedBox(height: 50),
@@ -102,13 +104,17 @@ class OnboardingPhotosScreen extends StatelessWidget {
             ),
             child: Text(
               'Next',
-              style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ],
       ),
+
       // Đặt onNext là null vì nút Next đã được xử lý riêng
-     
     );
   }
 }
