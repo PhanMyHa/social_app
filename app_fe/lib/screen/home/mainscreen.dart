@@ -1,3 +1,4 @@
+import 'package:app_fe/screen/home/create_post_screen.dart';
 import 'package:app_fe/screen/home/discover_screen.dart';
 import 'package:app_fe/screen/home/home_screen.dart';
 import 'package:app_fe/screen/home/matches_screen.dart';
@@ -18,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
   final _screens = [
     HomeFeedScreen(),
     DiscoverScreen(),
-    SizedBox(), // Add
+    CreatePostScreen(), // Add
     MessagesScreen(), // ❗ chỉ content
     MatchesScreen(),
   ];
